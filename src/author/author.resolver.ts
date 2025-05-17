@@ -26,7 +26,6 @@ export class AuthorResolver {
     @Args("nome") nome: string,
     @Args("age") age: number,
   ): Promise<Author> {
-
     return this.service.create({ nome, age });
   }
 
