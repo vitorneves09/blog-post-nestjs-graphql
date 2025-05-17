@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { Author } from "./author";
+import { Author } from "./author.entity";
 import { AuthorService } from "./author.service";
 import { NotFoundException } from "@nestjs/common";
 
@@ -26,6 +26,7 @@ export class AuthorResolver {
     @Args("nome") nome: string,
     @Args("age") age: number,
   ): Promise<Author> {
+
     return this.service.create({ nome, age });
   }
 

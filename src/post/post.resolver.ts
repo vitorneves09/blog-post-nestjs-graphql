@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { Post } from "./post";
+import { Post } from "./post.entity";
 import { PostService } from "./post.service";
 import { NotFoundException } from "@nestjs/common";
 

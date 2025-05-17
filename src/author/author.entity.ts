@@ -1,12 +1,18 @@
 import { Field, ID, Int, ObjectType } from "@nestjs/graphql";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Post } from "../post/post";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Post } from "../post/post.entity";
 
 @ObjectType()
 @Entity()
 export class Author {
   @Field(() => ID)
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Field()
@@ -22,6 +28,6 @@ export class Author {
   createdDate: Date;
 
   @Field(() => [Post])
-  @OneToMany(() => Post, post => post.author)
+  @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
 }
