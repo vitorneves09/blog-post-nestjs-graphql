@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  age: Int!
+  createdDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  published: Boolean!
+  author: Author!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Author {
+  id: ID!
+  nome: String!
+  age: Int!
+  createdDate: DateTime!
+  posts: [Post!]!
+}
+
+type Query {
+  getUserById(id: String!): User!
+  getAuthorById(id: String!): Author!
+  findAllAuthors: [Author!]!
+  findAllPosts: [Post!]!
+  findPostById(id: String!): Post!
+  findPostsByAuthorId(authorId: String!): [Post!]!
+}
+
+type Mutation {
+  createAuthor(nome: String!, age: Float!): Author!
+  updateAuthor(id: String!, nome: String, age: Float): Author!
+  deleteAuthor(id: String!): Boolean!
+  createPost(title: String!, content: String!, published: Boolean!, authorId: String!): Post!
+  updatePost(id: String!, title: String, content: String, published: Boolean): Post!
+  deletePost(id: String!): Boolean!
+}
